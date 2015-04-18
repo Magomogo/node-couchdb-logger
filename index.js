@@ -1,6 +1,8 @@
 (function () {
     'use strict';
 
+    var request = require('request');
+
     function CouchDbLogger (request) {
 
         this.log = function (event, callback) {
@@ -26,4 +28,15 @@
 
     module.exports = CouchDbLogger;
 
+    CouchDbLogger.simple = function (opts) {
+        opts = opts || {};
+
+        return new CouchDbLogger(request.defaults({
+            baseUrl: [
+                opts.secure ? 'https:/' : 'http:/',
+                opts.host || '127.0.0.1:' + (opts.port || '5984'),
+                opts.dbname || 'logger-application'
+            ].join('/')
+        }));
+    }
 }());

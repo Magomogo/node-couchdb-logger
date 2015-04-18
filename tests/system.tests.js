@@ -20,5 +20,14 @@ describe('system test', function () {
         });
     });
 
-    it('can be constructed simply');
+    it('can be constructed simply', function (done) {
+        var logger = CouchDbLogger.simple();
+
+        logger.log({ message: 'Yo!', channel: 'system test' }, function (err, data) {
+            assert.ifError(err);
+            assert.strictEqual(data.ok, true);
+            done();
+        });
+
+    });
 });
