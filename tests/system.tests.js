@@ -6,6 +6,12 @@ describe('system test', function () {
 
         CouchDbLogger = require('../index.js');
 
+    it('assumes couchdb logger presence', function () {
+        request('http://127.0.0.1:5984/logger-application', function (err) {
+            assert.ifError(err);
+        });
+    });
+
     it('can write to the logger using request', function (done) {
         var logger = new CouchDbLogger(
             request.defaults({

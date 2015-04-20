@@ -12,6 +12,7 @@ describe('unit test', function () {
 
         logger.log({ message: 'Yo!' }, function () {
             sinon.assert.calledOnce(request);
+            sinon.assert.calledWith(request, sinon.match.has('uri', '/_design/main/_rewrite/new'));
             done();
         });
     });
