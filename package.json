@@ -1,6 +1,6 @@
 {
   "name": "node-couchdb-logger",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Nodejs component to write to couchdb-logger-service",
   "main": "index.js",
   "directories": {
